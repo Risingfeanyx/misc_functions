@@ -68,6 +68,8 @@ done
 ##pulls videos from a youtube playlist and combines them into a single file
 
 syntax: merge_playlist playlist.url filename
+
+```
 merge_playlist() 
 {
   mkdir temp."$2" ; cd "$_" || exit
@@ -80,3 +82,4 @@ merge_playlist()
   rm -rf temp."$2"
   ls "$2".mkv
 }
+```
