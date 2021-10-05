@@ -79,7 +79,7 @@ merge_playlist()
   ffmpeg -f concat -safe 0 -i fileList.txt -c copy "$2".mkv
   mv "$2".mkv ..
   cd ..
-  rm -rf temp."$2"
+  find -delete temp."$2"
   ls "$2".mkv
 }
 ```
