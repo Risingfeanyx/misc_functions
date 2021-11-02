@@ -88,9 +88,8 @@ merge_playlist()
 
 ##converts a single PDF to cbz
 requires 
-
 https://linux.die.net/man/1/pdftoppm
-convert_cbz origin.pdf destination
+
 
 ```
 convert_cbz()
@@ -104,4 +103,21 @@ tar -caf "$1.cbz" *.jpg
 find . -type f -iname \*.jpg -delete
 cd ..
 }
+```
+
+Convert a folder full of PDFs to CBZ
+for filename requiring spaces, put in quotations
+```
+convert_all_cbz()
+{
+mkdir "_converted"
+cp *.pdf "_converted"
+cd "_converted"
+clear
+find . -maxdepth 1 -type f -name '*.pdf' -exec pdftoppm -jpeg {} {} \;
+tar -caf "$1.cbz" *.jpg
+find . -type f -iname \*.jpg -delete
+cd ..
+}
+
 ```
