@@ -92,10 +92,12 @@ convert_cbz origin.pdf destination
 ```
 convert_cbz()
 {
-for i in $2; do mkdir $2_converted; cp $1 $2_converted ;cd $2_converted; done
+mkdir "$2"_converted
+cp "$1" "$2"_converted
+cd "$2"_converted
 clear
-pdftoppm -jpeg $1 $2
-tar -caf $2.cbz $2-*.jpg
+pdftoppm -jpeg "$1" "$2"
+tar -caf "$2".cbz "$2"-*.jpg
 find . -type f -iname \*.jpg -delete
 cd ..
 }
