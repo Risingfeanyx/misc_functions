@@ -1,5 +1,7 @@
 
 
+
+
 <h2>Misc</h2>
 ##generates keypair
 
@@ -81,5 +83,19 @@ merge_playlist()
   cd ..
   find -delete temp."$2"
   ls "$2".mkv
+}
+```
+
+##converts a single PDF to cbz
+
+```
+convert_cbz()
+{
+for i in $2; do mkdir $2_converted; cp $1 $2_converted ;cd $2_converted; done
+clear
+pdftoppm -jpeg $1 $2
+tar -caf $2.cbz $2-*.jpg
+find . -type f -iname \*.jpg -delete
+cd ..
 }
 ```
