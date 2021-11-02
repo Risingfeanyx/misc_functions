@@ -87,6 +87,7 @@ merge_playlist()
 ```
 
 ##converts a single PDF to cbz
+convert_cbz origin.pdf destination
 
 ```
 convert_cbz()
