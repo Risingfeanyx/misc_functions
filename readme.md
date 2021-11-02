@@ -87,6 +87,9 @@ merge_playlist()
 ```
 
 ##converts a single PDF to cbz
+requires 
+
+https://linux.die.net/man/1/pdftoppm
 convert_cbz origin.pdf destination
 
 ```
