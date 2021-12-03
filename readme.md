@@ -129,7 +129,6 @@ volume()
 #requires https://github.com/Kanjirito/simple-manga-downloader/blob/master/USAGE.md
 for i in "$1"; do mkdir "$i"; cd "$i" ; done
 SMD down "$2" -id "$(pwd)"
-if ls */ | grep .cbz ; then
 tar -caf "$1 Volume 01.cbz" */Chapter\ {1..10}
 tar -caf "$1 Volume 02.cbz" */Chapter\ {11..21}
 tar -caf "$1 Volume 03.cbz" */Chapter\ {21..30}
@@ -142,7 +141,7 @@ tar -caf "$1 Volume 09.cbz" */Chapter\ {81..90}
 tar -caf "$1 Volume 10.cbz" */Chapter\ {91..100}
 tar -caf "$1 Volume 11.cbz" */Chapter\ {101..111}
 find . !  -name "*.cbz" -delete
-ls *.cbz ; fi
+ls *.cbz 
 }
 
 ```
