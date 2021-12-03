@@ -121,3 +121,25 @@ cd ..
 }
 
 ```
+
+```
+volume()
+{
+#when providing the name of the manga, double quote
+#requires https://github.com/Kanjirito/simple-manga-downloader/blob/master/USAGE.md
+SMD down $1 -id "$(pwd)"
+tar -caf "$(basename "$(pwd)") Volume 01.cbz" */Chapter\ {1..10}
+tar -caf "$(basename "$(pwd)") Volume 02.cbz" */Chapter\ {11..21}
+tar -caf "$(basename "$(pwd)") Volume 03.cbz" */Chapter\ {21..30}
+tar -caf "$(basename "$(pwd)") Volume 04.cbz" */Chapter\ {31..40}
+tar -caf "$(basename "$(pwd)") Volume 05.cbz" */Chapter\ {41..50}
+tar -caf "$(basename "$(pwd)") Volume 06.cbz" */Chapter\ {51..60}
+tar -caf "$(basename "$(pwd)") Volume 07.cbz" */Chapter\ {61..70}
+tar -caf "$(basename "$(pwd)") Volume 08.cbz" */Chapter\ {71..80}
+tar -caf "$(basename "$(pwd)") Volume 09.cbz" */Chapter\ {81..90}
+tar -caf "$(basename "$(pwd)") Volume 10.cbz" */Chapter\ {91..100}
+tar -caf "$(basename "$(pwd)") Volume 11.cbz" */Chapter\ {101..111}
+find . !  -name "*.cbz" -delete
+ls *.cbz
+}
+```
