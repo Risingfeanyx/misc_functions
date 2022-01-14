@@ -16,6 +16,31 @@ echo "alias "conn_"$1"=\"ssh -i ~/.ssh/"$1"-ecdsa "$2"\" >> .bashrc
 }
 ```
 
+#sets up ssh keys, rsyncs data
+
+```
+rsync_between_servers()
+	{
+	destination_server=$1
+	keypair=~/.ssh/intmig
+	clear
+	read -rep "What is the FROM and TO data?" origin_data destination_data
+	clear
+	GREEN='\033[0;32m'
+	NC='\033[0m' # No Color
+	clear
+	  echo -e 'y\n' | ssh-keygen -t rsa -N "" -f $keypair > /dev/null
+	  echo -e "Paste this into ~/.ssh/authorized_keys on $destination_server \n ${GREEN} $(cat $keypair.pub)${NC}\n" 
+	  echo -e "Don't forget permissions \nchmod 700 ~/.ssh/; \nchmod 600 ~/.ssh/authorized_keys"
+	  echo -e "Whitelist $(hostname -i) on $destination_server"
+	  read -p "Press enter once  $destination_server is whitelisted"
+	  echo "Logging in"
+	  ssh -i $keypair  $destination_server
+	  echo -e "Run the following to SSH back in \n"ssh -i $keypair  $destination_server" "
+	  echo -e "Run the following to sync data if any was chosen  \n"rsync -zvaPe "ssh -i $keypair" $origin_data $destination_server:$destination_data" "
+	}
+```
+
 
 ##runs 2 applications at the same time
 #usage split_em command_1 command_2
